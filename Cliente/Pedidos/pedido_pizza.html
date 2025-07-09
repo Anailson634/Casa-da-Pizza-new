@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fazer pedido da pizza</title>
+  <link rel="stylesheet" href="style/pedido_pizza_css.css" />
+  <link rel="stylesheet" href="style/styleSelect.css">
+</head>
+<body>
+  <div class="detalh_produto">
+    <img id="imagem_path" alt="Foto da Pizza">
+    <div class="info">
+      <h1 class="nome_pizza"></h1>
+      <p class="informacoes"></p>
+    </div>
+  </div>
+
+  <div class="opcoes">
+    <div class="opcoes-acompanhamento">
+      <div class="central-opc">
+        <h3>Acompanhamento de sachê?</h3>
+        <div class="saches">
+          <label>Sim<input type="radio" name="sache" value="Sim" checked></label>
+          <label>Não<input type="radio" name="sache" value="Não"></label>
+        </div>
+      </div>
+      <div class="central-opc">
+        <h3>Tamanho</h3>
+        <div class="tamanho"></div>
+      </div>
+
+      <div class="central-opc">
+        <h3>Outro Sabor</h3>
+        <div class="OutroSabor">
+          <select id="Outrosabor">
+            <option value="Nenhum">Nenhum</option>
+            <optgroup label="Tradicionais" id="SelectedTradicionais">
+            </optgroup>
+            <optgroup label="Especiais" id="SelectedEspeciais">
+            </optgroup>
+            <optgroup label="Doces" id="SelectedDoces">
+            </optgroup>
+          </select>
+        </div>
+      </div>
+      <div class="central-opc">
+        <h3>Bordas</h3>
+        <div class="bordas"></div>
+      </div>
+      <div class="compra">
+        <div onclick="enviar_pizza_carrinho()" class="button-compra">Adicionar ao carrinho</div>
+        <div onclick="location.href='../Pagina inicial/catalago.html'" class="button-compra">Cancelar</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script/carregar_pedidos_pizza.js"></script>
+  <script src="../scripts/ShowPOPUP.js"></script>
+  <script src="script/carregar_pizzas_select.js"></script>
+  <script>
+    adicionar_sabores()
+  </script>
+  <script>
+    function enviar_pizza_carrinho(){
+      var checked_sache = document.querySelector('input[name = "sache"]:checked');
+      var checked_tamanho = document.querySelector('input[name = "tamanho"]:checked');
+      var checked_borda = document.querySelector('input[name = "borda"]:checked');
+      var selectOPT=document.getElementById("Outrosabor");
+      var pizza2=selectOPT.options[selectOPT.selectedIndex];
+
+      const token=localStorage.getItem("token")
+      fetch("http://127.0.0.1:8000/carrinho", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            "Pizza": data["Pizza"],
+            "Detalhes": data["Detalhes"],
+            "Sache": checked_sache.value,
+            "Tamanho": checked_tamanho.value,
+            "Borda": checked_borda.value,
+            "Img": data["Icon"],
+            "Quantidade": 1,
+            "Outro sabor": pizza2.value
+        })})
+      .then(response => {
+        return response.json();
+        })
+      .then(date=>{
+        if (date["Erro"]){
+          //console.log(date["Erro"][0]["Quantidade"])
+          criar_janela_popup("Pizza ja criada", date["Erro"])
+        }else {
+          location.href="../Pagina inicial/catalago.html"
+        }
+      })
+    }
+  </script>
+</body>
+</html>

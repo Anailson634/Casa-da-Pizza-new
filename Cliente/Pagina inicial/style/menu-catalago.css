@@ -1,0 +1,51 @@
+@media screen and (min-width: 1000px){
+    #menu-carrinho > img {
+        width: 13% !important;
+    }
+}
+header {
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    background-color: var(--marrom-escuro);
+    
+} #logo-container {
+    color: var(--bege-claro);
+    font-family: "Fjalla One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} .menu-catalago {
+    user-select: none;
+    background-color: var(--marrom-escuro);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    font-size: 1.4rem;
+    color: var(--bege-claro);
+    font-weight: bold;
+    font-size: 0.8rem;
+} .menu-catalago > div  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transition: 0.4s;
+}
+
+
+.tradicionais-catalago, .especiais-catalago, .doces-catalago, .bebidas-catalago, .carrinho-catalago{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+} 

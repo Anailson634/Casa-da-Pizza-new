@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/login.css">
+    <title>Entrar ou Criar</title>
+</head>
+<body>
+    <header>
+        <img src="Icons/Logo1.png" alt="Fundo">
+    </header>
+    <main>
+        <div class="container">
+            <div class="entrar">
+                <label>Nome <input type="text" id="Nome" placeholder="Nome "></label>
+                <div>
+                    <label>Senha <input type="password" id="Senha" placeholder="Sua Senha"></label>
+                    <label id="mostrar_senha">mostrar senha <input type="checkbox" onclick="Senha.type = this.checked ? 'text' : 'password'"></label>
+                </div>
+            </div>
+            <div class="meios_login">
+                <div onclick="location.href='cadastro.html'" class="botoes">Cadastrar</div>
+                <div onclick="carregar()" class="botoes">Entrar</div>
+            </div>
+        </div>
+    </main>
+    <script src="scripts/paginaInicial.js"></script>
+    <script src="scripts/ShowPOPUP.js"></script>
+</body>
+</html>

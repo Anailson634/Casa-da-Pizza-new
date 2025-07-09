@@ -1,0 +1,44 @@
+.OutroSabor {
+  display: inline-block;
+  margin: 10px 0;
+  font-family: Arial, sans-serif;
+}
+
+.OutroSabor select {
+  width: 200px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  appearance: none;           /* remove setas padrão em alguns navegadores */
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.OutroSabor select:focus {
+  border-color: #66afe9;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+  outline: none;
+}
+
+.OutroSabor select option {
+  padding: 4px;
+}
+
+/* Ícone de seta personalizada (opcional) */
+.OutroSabor {
+  position: relative;
+}
+
+.OutroSabor::after {
+  content: "▾";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #666;
+  font-size: 12px;
+}

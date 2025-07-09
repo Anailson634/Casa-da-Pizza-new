@@ -1,0 +1,121 @@
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #fdf6e3;
+  color: #333;
+}
+
+main {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dinherio {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+dinherio h1, .localh3, .pagamentoh3 {
+  color: #d32f2f;
+}
+
+.dinherio h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, #ff8a65, #d32f2f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.Local, .Pagamento {
+  margin-bottom: 24px;
+}
+
+.Local h2, .Pagamento h2 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.DivInputCheck {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.DivInputCheck label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.DivInputCheck label:hover {
+  background: #f5f5f5;
+}
+
+.DivInputCheck input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #d32f2f;
+}
+
+.bottun {
+  display: block;
+  text-align: center;
+  padding: 14px;
+  background: #d32f2f;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.bottun:hover {
+  background: #b71c1c;
+}
+/* só esconde o input text dentro de hidden_information */
+.hidden_information input[type="text"] {
+  display: none;
+  margin-top: 8px;
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* quando estiver active, o input aparece */
+.hidden_information.active input[type="text"] {
+  display: flex;
+}
+
+@media (max-width: 480px) {
+  main {
+    width: 90%;
+    margin: 20px;
+    padding: 16px;
+  }
+  .dinherio h1 {
+    font-size: 2rem;
+  }
+  .Local h2, .Pagamento h2 {
+    font-size: 1.1rem;
+  }
+}
+
+

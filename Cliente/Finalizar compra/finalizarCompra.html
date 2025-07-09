@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+      <main onload="carregar_carrinho('.pedidos_conferencia')">
+    <div class="dinherio">
+      <h1 id="Valor_total">R$00</h1>
+    </div>
+
+    <div class="Local">
+      <h2 class="localh3">Local de entrega</h2>
+      <div class="DivInputCheck">
+        <label><input onclick="valor_original()" type="radio" name="Local_entrega" value="retirada" checked> Para retirada</label>
+        <label><input type="radio" name="Local_entrega" value="endereco" onclick="calcularEntrega()"> Neste endereço</label>
+
+        <div class="hidden_information">
+          <label><input onclick="valor_original()" type="radio" name="Local_entrega" value="outro">Outro <p class="aparecer_obs" style="color: rgba(255, 0, 0, 0.548); font-size: small;">Valor de entrega sera cobrado no local</p></label>
+          <input class="aparecer_obs" type="text" id="outro_detalhes" placeholder="Informe os detalhes">
+        </div>
+      </div>
+    </div>
+
+    <div class="Pagamento">
+      <h2 class="pagamentoh3">Forma de pagamento</h2>
+      <div class="DivInputCheck">
+        <label><input type="radio" name="F_pagamento" value="pix" checked> Pix</label>
+
+        <div class="hidden_information">
+            <label><input type="radio" name="F_pagamento" value="dinheiro"> Dinheiro</label>
+          <input class="aparecer_obs" type="text" id="outro_troco" placeholder="Precisa de troco? Informe o valor">
+        </div>
+      </div>
+    </div>
+    <div class="pedidos_conferencia"></div>
+    <div onclick="pedidos_pizzas()" class="bottun">Pagar</div>
+  </main>
+      <!-- ADICIONE ESTE SCRIPT AO FINAL -->
+      <script src="script/desaparecer_informacoes.js"></script>
+      <script src="../scripts/ShowPOPUP.js"></script>
+      <script src="../scripts/menu.js"></script>
+      <script src="script/distancia_calculo.js"></script>
+    <script>
+      valor_original()
+
+      function pedidos_pizzas(){
+        const Local=document.querySelector('input[name=Local_entrega]:checked').value
+        const pagamento=document.querySelector('input[name=F_pagamento]:checked').value
+        var enviar_body={}
+
+        switch (Local){
+          case "endereco":
+            enviar_body.local=localStorage.getItem("Localizacao");
+            enviar_body.taxa=valor_taxa;
+            break;
+          case "outro":
+            let outro=document.querySelector("#outro_detalhes").value;
+            enviar_body.local=outro;
+            break;
+          default:
+            enviar_body.local="Retirada no local!";
+        }
+        switch (pagamento){
+          case "pix":
+            enviar_body.pagamento="Mandar QRCode";
+            break;
+          default:
+            let troco=document.querySelector("#outro_troco").value;
+            enviar_body.pagamento=`Dinheiro, troco?: ${troco}`;
+        }
+        carregar_carrinho_dados().then(pedidos=>{
+          enviar_body.pedidos=JSON.stringify(pedidos);
+          //console.log(enviar_body);
+          fetch("http://127.0.0.1:8000/prepararpedido", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify(enviar_body)       
+          }).then(response => response.json()).then(response => {
+            criar_janela_popup("Pedido concluido!", response["Sucesso"], "#3ce745")
+          })
+        })
+      }
+    </script>
+</body>
+</html>

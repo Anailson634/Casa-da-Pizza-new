@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/index_style.css">
+    <link rel="stylesheet" href="../styles/card.css">
+    <link rel="stylesheet" href="style/menu-catalago.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    <title>Casa da pizza</title>
+    <style>
+          .button-comprar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            margin: 5px;
+            background-color: #07963bb7;
+            color: white;
+            font-weight: 600;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.2s ease;
+        }
+        .button-comprar:hover {
+            background-color: #15803d;
+        } .conta {
+            width: 100%;
+        }
+    </style>
+</head>
+<body onload="desaparecer('.tradicionais-catalago')">
+    <header>
+        <div id="logo-container">
+            <h1>Casa da pizza</h1>
+            <!--<img src="Pizzas/logo.png" alt="logo" id="logo">-->
+        </div>
+        
+    </header>
+    <div class="menu-catalago">
+        <div onclick="desaparecer('.tradicionais-catalago','menu-tradicionais')" id="menu-tradicionais">Tradicionais</div>
+        <div onclick="desaparecer('.especiais-catalago', 'menu-especiais')" id="menu-especiais">Especiais</div>
+        <div onclick="desaparecer('.doces-catalago', 'menu-doces')" id="menu-doces">Doces</div>
+        <div onclick="desaparecer('.bebidas-catalago', 'menu-bebidas')" id="menu-bebidas">Bebidas</div>
+        <div onclick="carregar_carrinho()" id="menu-carrinho"><img src="../Icons/carrinho.png" alt="carrinho" style="width: 40%;"></div>
+    </div>
+    <main id="catalogo">
+        <div class="tradicionais-catalago">
+</div>
+        <div class="especiais-catalago"></div>
+        <div class="doces-catalago"></div>
+        <div class="bebidas-catalago"></div>
+        <div class="carrinho-catalago" style="display: flex; flex-direction: column;">
+            <div class="conta"><h4 id="conta_valor">R$</h4></div>
+            <div class="carrinho_catalago2" style=" flex-wrap: wrap; width: 100%; display: flex; justify-content: center; align-items: center;"></div>
+            <div onclick="pedir_pizzas()" class="button-comprar">Comprar</div>
+        </div>
+    </main>
+    <!--<footer><a href="https://wa.me/5575999747065" target="_blank">WhatsApp</a></footer>-->
+    <script src="../scripts/ShowPOPUP.js"></script>
+    <script src="script/carregar_pizzas.js"></script>
+    <script src="../scripts/menu.js"></script>
+</body>
+</html>

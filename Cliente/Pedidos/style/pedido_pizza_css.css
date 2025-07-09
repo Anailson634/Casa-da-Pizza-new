@@ -1,0 +1,174 @@
+/* ─── fontes ───────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* ─── variáveis de tema ───────────────────────────────────── */
+:root {
+  --primary: #f28c00;
+  --secondary: #fff3e0;
+  --dark: #3b2f2f;
+  --light: #ffffff;
+  --radius: 8px;
+  --gap: 16px;
+  --transition: 0.3s;
+}
+
+/* ─── reset básico ─────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--secondary);
+  color: var(--dark);
+  line-height: 1.6;
+  padding: var(--gap);
+}
+
+/* ─── cartão da pizza ─────────────────────────────────────── */
+.detalh_produto {
+  display: flex;
+  gap: var(--gap);
+  background: var(--light);
+  padding: var(--gap);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: var(--gap);
+  align-items: flex-start;
+}
+
+.detalh_produto img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  transition: transform var(--transition);
+}
+
+.detalh_produto img:hover {
+  transform: scale(1.05);
+}
+
+.detalh_produto .info {
+  flex: 1;
+}
+
+.nome_pizza {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.informacoes {
+  font-size: 1rem;
+  color: var(--dark);
+}
+
+/* ─── opções ──────────────────────────────────────────────── */
+.opcoes {
+  display: flex;
+  justify-content: center;
+}
+
+.opcoes-acompanhamento {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  width: 100%;
+  max-width: 800px;
+}
+
+/* título de cada bloco */
+.central-opc h3 {
+  font-size: 1.25rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+/* grupo de labels */
+.bordas, .saches, .tamanho {
+  display: flex;
+  gap: var(--gap);
+}
+
+/* estilo dos labels+radios */
+.bordas label,
+.saches label,
+.tamanho label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--light);
+  padding: 8px 12px;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.bordas,
+.tamanho {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.bordas label:hover,
+.saches label:hover,
+.tamanho label:hover {
+  background: var(--primary);
+  color: var(--light);
+}
+.compra {
+  display: flex;
+}
+  .button-compra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin: 5px;
+    background-color: #07963bb7;
+    color: white;
+    font-weight: 600;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.2s ease;
+  }
+  .button-compra:hover {
+    background-color: #15803d;
+  }
+
+
+/* deixa o indicador do radio com a cor do tema */
+.bordas input[type="radio"],
+.saches input[type="radio"],
+.tamanho input[type="radio"] {
+  accent-color: var(--primary);
+}
+
+/* ─── responsividade ───────────────────────────────────────── */
+@media (min-width: 1000px) {
+  .detalh_produto {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 870px) {
+  .detalh_produto {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .detalh_produto img {
+    max-width: 200px;
+  }
+
+  .nome_pizza,
+  .informacoes {
+    text-align: center;
+  }
+}

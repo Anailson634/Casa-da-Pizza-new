@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/login.css">
+    <title>Entrar ou Criar</title>
+</head>
+<body>
+    <style>
+       /* Modern, clean, responsive styles for login and cadastro pages */
+
+:root {
+    --bg-color: #f5f6fa;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --primary-color: #4a90e2;
+    --accent-color: #50e3c2;
+    --text-color: #333;
+    --input-bg: #fff;
+    --input-border: #ccc;
+    --border-radius: 12px;
+    --transition-speed: 0.3s;
+    --max-width-mobile: 90%;
+    --max-width-desktop: 360px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Container used in both login and cadastro pages */
+.container {
+    width: 100%;
+    max-width: var(--max-width-desktop);
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: background var(--transition-speed);
+}
+
+header {
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+}
+
+.entrar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+label {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid var(--input-border);
+    border-radius: var(--border-radius);
+    background: var(--input-bg);
+    transition: border-color var(--transition-speed);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* Buttons shared style */
+.botoes {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    transition: transform var(--transition-speed), background-color var(--transition-speed);
+    margin-top: 0.5rem;
+}
+
+.botoes:hover {
+    transform: translateY(-2px) scale(1.02);
+    background-color: var(--accent-color);
+}
+
+.meios_login {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.meios_login .botoes {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--input-border);
+    padding: 0.5rem 1rem;
+}
+
+.meios_login .botoes:hover {
+    background-color: var(--input-bg);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* Cadastro page specific overrides */
+/* Flex-wrap on container to allow multiple fieldsets */
+.container {
+    flex-wrap: wrap;
+}
+
+fieldset {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    border: none;
+    padding: 0;
+    gap: 1rem;
+}
+
+fieldset legend {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Custom label layout for cadastro form */
+label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Input adjustments for cadastro form */
+input {
+    margin-left: 3px;
+    width: 60%;
+}
+
+#container-confirme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#check_error {
+    color: rgba(255, 0, 0, 0.644);
+    font-size: small;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        max-width: var(--max-width-mobile);
+        padding: 1.5rem;
+    }
+    header h1 {
+        font-size: 1.5rem;
+    }
+    .botoes, input[type="text"], input[type="password"], input[type="email"] {
+        font-size: 0.95rem;
+    }
+}
+
+    </style>
+    <header>
+        <h1>Crie seu perfil</h1>
+    </header>
+    <main>
+        <div class="container">
+                <fieldset>
+                    <legend>Nome popular</legend>
+                    <label>Nome <input type="text" id="Nome" placeholder="Nome"></label>
+                    <label>Telefone <input type="text" id="Telefone" oninput="this.value = this.value.replace(/\s/g, '')"placeholder="00 0000 000"></label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Meios de comunicação</legend>
+                    <label>Senha <input type="password" id="Senha" oninput="this.value = this.value.replace(/\s/g, '')"placeholder="Senha"></label>
+                    <label>Con. senha <input type="password" id="Confirmar_senha" oninput="this.value = this.value.replace(/\s/g, '')"placeholder="Confiramar Senha"></label>
+                </fieldset>
+                <div id="container-confirme">
+                    <div onclick="enviar_dados()" class="botoes">Criar</div>
+                    <p id="check_error"></p>
+                </div>
+        </div>
+    </main>
+    <script src="scripts/ShowPOPUP.js"></script>
+    <script >
+        function enviar_dados(){
+            let ValidKeys=0;
+
+            let Check=document.querySelector("#check_error");
+            let Nome=document.querySelector("#Nome").value.trim();
+
+            let Senha=document.querySelector("#Senha").value;
+            let con_Senha=document.querySelector("#Confirmar_senha").value;
+            Senha.value="Senha";
+
+
+            let Telefone=document.querySelector("#Telefone").value;
+
+            if (Nome.length<2) {
+                Check.textContent="Coloque um nome maior";
+            }
+             else if (Telefone.length<9) {
+                Check.textContent="Número incompleto!";
+            } else if (Senha!=con_Senha||Senha=="") {
+                Check.textContent="Certifique-se de que suas senhas estejam corespondentes!";
+            } else {
+                ValidKeys=1;
+            }
+            if (ValidKeys) {
+                fetch(" http://127.0.0.1:8000/cadastro", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        "role": "usuario",
+                        "Nome": Nome,
+                        "Telefone": Telefone,
+                        "Senha": Senha
+                    })
+                }).then(response =>{return response.json()})
+                .then(data=>{
+                    console.log(data)
+                    if (data["sucesso"]){
+                        criar_janela_popup("Sucesso", data["mensagem"], color="#3ce745")
+                        location.href="index.html"
+                    } else {
+                        criar_janela_popup("Usuario existente", data["Usuario existente"])
+                    }
+                })
+            }
+        }
+    </script>
+</body>
+</html>
