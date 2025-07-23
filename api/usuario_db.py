@@ -6,10 +6,10 @@ class meu_db():
     def __init__(self):
         self.backEnd = backend_sql.backFunc()
         self.conexao = mysq.connect(
-            host="localhost",
+            host="mysql",
             user="root",
             password="casadapizza",
-            database="teste_db"
+            database="pizzaria"
         )
         # Assegura tabela de usuários (só uma vez)
         self._assegurar_tabela_usuarios()

@@ -8,10 +8,10 @@ class backFunc:
         self.pool = pooling.MySQLConnectionPool(
             pool_name="pool_pedidos",
             pool_size=10,
-            host="localhost",
+            host="mysql",
             user="root",
             password="casadapizza",
-            database="teste_db"
+            database="pizzaria"
         )
         # Cria tabela 'pedidos' apenas uma vez
         self._assegurar_tabela_pedidos()
@@ -48,7 +48,7 @@ class backFunc:
         """
         conn, cursor = self._get_conn_cursor()
         try:
-            sql = "INSERT INTO pedidos (nome, pendentes, finalizadas, cancelar) VALUES (%s, %s, %s, %s, %s)"
+            sql = "INSERT INTO pedidos (nome, pendentes, finalizadas, cancelar) VALUES (%s, %s, %s, %s)"
             valores = (nome, json.dumps([]), json.dumps([]), json.dumps([]))
             cursor.execute(sql, valores)
             conn.commit()
