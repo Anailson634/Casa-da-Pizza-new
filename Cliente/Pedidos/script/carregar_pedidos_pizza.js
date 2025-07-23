@@ -22,11 +22,15 @@ const tamanho = document.querySelector(".tamanho");
 Object.entries(data["Tamanho"]).forEach(([key, val]) => {
   const label = document.createElement("label");
   const radio = document.createElement("input");
+  const pText=document.createElement("p");
   radio.type = "radio";
   radio.name = "tamanho";
   radio.value = val;
   radio.checked = true;
-  label.textContent = key;
+
+  pText.textContent = key;
+  pText.id="TamanhoPizzaText"
+  label.appendChild(pText)
   label.appendChild(radio);
   tamanho.appendChild(label);
 });

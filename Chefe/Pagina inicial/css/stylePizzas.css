@@ -1,0 +1,6 @@
+.dDetalhes {
+    transition: 0.5s;
+}
+.hidden-infos{
+    display: none;
+}

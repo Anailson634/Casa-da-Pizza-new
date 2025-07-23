@@ -48,8 +48,8 @@ class backFunc:
         """
         conn, cursor = self._get_conn_cursor()
         try:
-            sql = "INSERT INTO pedidos (nome, pendentes, feitas, finalizadas, cancelar) VALUES (%s, %s, %s, %s, %s)"
-            valores = (nome, json.dumps([]), json.dumps([]), json.dumps([]), json.dumps([]))
+            sql = "INSERT INTO pedidos (nome, pendentes, finalizadas, cancelar) VALUES (%s, %s, %s, %s, %s)"
+            valores = (nome, json.dumps([]), json.dumps([]), json.dumps([]))
             cursor.execute(sql, valores)
             conn.commit()
         except mysq.errors.IntegrityError:
@@ -98,6 +98,19 @@ class backFunc:
         finally:
             cursor.close()
             conn.close()
+    
+    def ver_todos_pedidos(self):
+        conn, cursor = self._get_conn_cursor()
+        try:
+            cursor.execute("SELECT * FROM pedidos")
+            return cursor.fetchall()
+        except Exception as e:
+            print(f"Erro ao obter pedidos de: {e}")
+            return []
+        finally:
+            cursor.close()
+            conn.close()
+
 
     def drop_tabela_pedidos(self):
         conn, cursor = self._get_conn_cursor()

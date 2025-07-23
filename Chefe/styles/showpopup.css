@@ -1,0 +1,97 @@
+/* Variáveis de tema */
+:root {
+    --popup-bg: rgba(255, 255, 255, 0.8);
+    --accent-color: #e74c3c;
+    --text-color: #2c3e50;
+    --btn-hover: #c0392b;
+  }
+  
+  /* Fonte externa (caso queira usar Google Fonts) */
+  /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap'); */
+  
+  @font-face {
+    font-family: 'MinhaFonte';
+    src: url('/Fonts/Social Gothic Regular.otf') format('opentype');
+  }
+  
+  @media screen and (max-width: 900px) {
+    .janela_popup {
+      width: 90% !important;
+    }
+  }
+  
+  .janela_popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    max-width: 95%;
+    background: var(--popup-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    font-family: 'MinhaFonte', sans-serif;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 0.4s forwards;
+  }
+  
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  
+  /* Cabeçalho do aviso */
+  .corpo_aviso {
+    padding: 24px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .corpo_aviso img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
+  }
+  
+  .corpo_aviso h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  
+  /* Mensagem detalhada */
+  .corpo_mensagem {
+    padding: 16px 24px;
+    font-size: 1rem;
+    line-height: 1.4;
+    background: rgba(231, 76, 60, 0.05);
+    color: var(--text-color);
+  }
+  
+  /* Botão de confirmação */
+  .button_ok {
+    margin: 16px auto 24px;
+    padding: 12px 32px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  
+  .button_ok:hover {
+    background: var(--btn-hover);
+    transform: translateY(-2px);
+  }
+  
+  .button_ok:active {
+    transform: translateY(0);
+  }
+  

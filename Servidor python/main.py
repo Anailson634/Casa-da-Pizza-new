@@ -86,9 +86,18 @@ def pedido_andamento():
     print(user, dados)
     back_gerenc.adicionar_pedido(dados, user)
     usuarios.editar_carrinho(user, _Exc=0)
-    #print(back_gerenc.ver_pedidos(user))
 
     return jsonify({"Sucesso": "Seu pedido esta em andamento!"})
+
+@app.route("/progrsso", methods=["POST", "GET"])
+@jwt_required()
+def acompanhar_progresso():
+    pegar_nome=get_jwt_identity()
+    validar_autorizacao=get_jwt()
+    if validar_autorizacao["role"]=="chefe":
+        return back_gerenc.ver_todos_pedidos()
+    return jsonify({"Sucesso": back_gerenc.ver_pedidos(pegar_nome)}) 
+
 
 @app.route("/cadastro", methods=["POST"])
 def response_front():

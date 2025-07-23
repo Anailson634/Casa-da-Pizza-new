@@ -1,0 +1,32 @@
+@media only screen and (min-width: 100px) {
+    #logo-container h1 {
+        font-size: 3.5rem;
+    
+    } .tradicionais-catalago {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+} @media only screen and (min-width: 100px) {
+    .tradicionais-catalago {
+        width: 100%;
+    }
+}
+
+
+:root {
+    background-color: #ffffff00;
+    --bege-claro: #f3e1ca;
+    --marrom-escuro: #4d311f;
+    --terracota: #c74f1c;
+    --verde-oliva: #6B8E23;
+    --fundo-bege: #dad2c8;
+    --marrom: #5A3E2B;
+}
+body {
+    background-color: var(--fundo-bege);
+    margin: 0;
+    padding: 0;
+}

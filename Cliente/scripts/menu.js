@@ -25,7 +25,7 @@ function carregar_carrinho(){
     carregar_carrinho_dados().then(date=>{
         date["Dados"].forEach(element=>{
             const qtn_pizza=element["Quantidade"];
-            let preco_pizza=(parseFloat(element["Tamanho"])*qtn_pizza)
+            let preco_pizza=(parseFloat(element["Tamanho_preco"])*qtn_pizza)
             total+=preco_pizza
             
             if (element["Borda"]!="Nenhuma"){

@@ -65,6 +65,7 @@
     function enviar_pizza_carrinho(){
       var checked_sache = document.querySelector('input[name = "sache"]:checked');
       var checked_tamanho = document.querySelector('input[name = "tamanho"]:checked');
+      const texto_tamanho= document.querySelector("#TamanhoPizzaText").textContent
       var checked_borda = document.querySelector('input[name = "borda"]:checked');
       var selectOPT=document.getElementById("Outrosabor");
       var pizza2=selectOPT.options[selectOPT.selectedIndex];
@@ -80,7 +81,8 @@
             "Pizza": data["Pizza"],
             "Detalhes": data["Detalhes"],
             "Sache": checked_sache.value,
-            "Tamanho": checked_tamanho.value,
+            "Tamanho": texto_tamanho,
+            "Tamanho_preco":checked_tamanho.value,
             "Borda": checked_borda.value,
             "Img": data["Icon"],
             "Quantidade": 1,

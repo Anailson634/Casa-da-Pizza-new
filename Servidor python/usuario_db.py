@@ -193,8 +193,9 @@ if __name__=="__main__":
     # Exemplos de uso:
     # print(db.criar_usuario("usuario", "na", "75999747065", "123"))
     # db.editar_usuario("nome", "na", "naah")
-    # print(db.ver_todos_usuarios())
+    for c in db.ver_todos_usuarios():
+        print(f"\nNome: {c[2]}\nPosição: {c[1]}\n")
     # db.editar_carrinho(nome="na", valor={"pizza": "Flango"}, _Exc=1)
     # print(db.ver_unico_usuario("na"))
-    db.apagar_usuario("na")
+    #db.apagar_usuario("na")
     db.encerrar()
