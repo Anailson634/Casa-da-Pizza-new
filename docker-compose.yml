@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./api
+    ports:
+      - "5000:5000"
+    networks:
+      - pizzanet
+
+  site-cliente:
+    build: ./site-cliente
+    ports:
+      - "3000:80"
+    networks:
+      - pizzanet
+
+  site-chefe:
+    build: ./site-chefe
+    ports:
+      - "3001:80"
+    networks:
+      - pizzanet
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+      - site-cliente
+      - site-chefe
+    networks:
+      - pizzanet
+
+networks:
+  pizzanet:
+    driver: bridge
