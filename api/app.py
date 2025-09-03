@@ -146,4 +146,4 @@ def foto(nome_imagem):
     return send_from_directory("fotos", nome_imagem)     
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0", port=8000)
+    app.run(host="0.0.0.0", port=5000)
