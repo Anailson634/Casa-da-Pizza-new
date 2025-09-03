@@ -4,8 +4,6 @@ FROM python:3.10-slim
 WORKDIR /app
 COPY . /app
 
-RUN pip install flask flask-cors flask-jwt-extended
-RUN pip install pwdlib
-RUN pip install mysql-connector-python
+RUN pip install --no-cache-dir -r requirements.txt
 
 CMD ["python", "app.py"]
